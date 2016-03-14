@@ -93,13 +93,15 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;OPENGLENGINE_EXPORTS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dep\GLM\;$(ProjectDir)Dep\ImGUI\;$(ProjectDir)Dep\STB\;$(ProjectDir)Dep\Utilities\;$(ProjectDir)Header\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dep\GLM\;$(ProjectDir)Dep\ImGUI\;$(ProjectDir)Dep\STB\;$(ProjectDir)Dep\Utilities\;$(ProjectDir)Header\;$(ProjectDir)Header\System\;$(ProjectDir)Header\Assets\;$(ProjectDir)Header\GameObjects\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Lib\FBX\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FBXLoader_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -124,15 +126,17 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;OPENGLENGINE_EXPORTS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dep\GLM\;$(ProjectDir)Dep\ImGUI\;$(ProjectDir)Dep\STB\;$(ProjectDir)Dep\Utilities\;$(ProjectDir)Header\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dep\GLM\;$(ProjectDir)Dep\ImGUI\;$(ProjectDir)Dep\STB\;$(ProjectDir)Dep\Utilities\;$(ProjectDir)Header\;$(ProjectDir)Header\System\;$(ProjectDir)Header\Assets\;$(ProjectDir)Header\GameObjects\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Inc\FBX\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FBXLoader.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -154,10 +158,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Header\Application.h" />
+    <ClInclude Include="Dep\Utilities\gl_core_4_4.h" />
+    <ClInclude Include="Header\Assets\Vertex.h" />
+    <ClInclude Include="Header\GameObjects\GameObject.h" />
+    <ClInclude Include="Header\Assets\AssetLoader.h" />
+    <ClInclude Include="Header\OpenGLEngine_DLL.h" />
+    <ClInclude Include="Header\System\Application.h" />
+    <ClInclude Include="Header\Assets\Mesh.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Application.cpp" />
+    <ClCompile Include="Dep\Utilities\gl_core_4_4.c" />
+    <ClCompile Include="Source\Assets\Mesh.cpp" />
+    <ClCompile Include="Source\GameObjects\GameObject.cpp" />
+    <ClCompile Include="Source\Assets\AssetLoader.cpp" />
+    <ClCompile Include="Source\System\Application.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
